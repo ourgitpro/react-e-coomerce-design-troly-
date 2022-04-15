@@ -1,6 +1,6 @@
 a {
-    text-decoration: none;
-    display: inline-block;
+    text-decoration: none !important;
+    display: inline-block !important;
 }
 
 :root {
@@ -16,7 +16,7 @@ a {
     width: 1170px;
     margin: 0 auto;
 }
-
+/* menu */
 .main_menu{
     background: transparent;
 }
@@ -26,8 +26,6 @@ a {
     display: flex;
     justify-content: center;
     line-height: 60px;
-    margin-top: 15px;
-
 }
 
 .menu_item a{
@@ -96,7 +94,7 @@ a {
     text-align: center;
     line-height: 20px;
 }
-
+/* banner */
 .custom-slider{
     margin-top: 25px;
 }
@@ -159,3 +157,61 @@ a {
     -o-transform: scale(1.2);
 }
 
+/* deal */
+.deal_part{
+    margin-top: 110px;
+}
+
+.dealbox{
+    padding: 155px 55px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.dealbox h5{
+    color: var(--title-color);
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.dealbox h3{
+    color: var(--title-color);
+    font-family: var(--heading);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 42px;
+    width: 245px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.dealbox a{
+    color: #fff;
+    font-family: var(--heading);
+    font-size: 12px;
+    font-weight: 300;
+    padding: 5px 10px;
+    background: var(--hover);
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.dealbtn1 {
+    background: #FC9D9D !important;/* practice purpose only */
+}
+
+.dealbox:hover h5{
+    color: var(--hover);
+}
