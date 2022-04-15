@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar, Nav, Dropdown,Container } from 'rsuite';
 import { FaRegUserCircle,FaBalanceScale } from 'react-icons/fa';
 import { AiOutlineHeart,AiOutlineShoppingCart } from 'react-icons/ai';
-import logo from '../assets/images/logo.png'
+import axios from 'axios'
 
 const Menubar = () => {
+  let [logo,setLogo] = useState({})
+
+  useEffect(async()=>{
+    let logoData = await axios.get('http://localhost:8000/logo')
+    setLogo(logoData.data.img)
+  },[])
   return (
     <>
     <div className='container'>
