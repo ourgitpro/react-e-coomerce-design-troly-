@@ -13,8 +13,12 @@ const Banner = () => {
     <>
     <Carousel autoplay className="custom-slider">
     {banner.map(item=>(
-        <div className='sliderItem'>
-            <h1>{item.subheading}</h1>
+        <div className='sliderItem' style={{backgroundImage: `url(${item.img})`}}>
+            <div className='container'>
+            <h3>{item.subheading}</h3>
+            <h1>{item.heading}</h1>
+            <a>{item.button}</a>
+            </div>
         </div>
     ))}
        
