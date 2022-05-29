@@ -146,6 +146,7 @@ ul,ol{
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+    cursor: pointer;
 }
 
 .rs-carousel-shape-dot .rs-carousel-label {
@@ -153,7 +154,7 @@ ul,ol{
 }
 
 .rs-carousel-label-wrapper input:checked~label {
-    background-color: #FC9D9D;
+    background-color: var(--pink);
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
@@ -185,6 +186,7 @@ ul,ol{
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .dealbox h3{
@@ -210,10 +212,11 @@ ul,ol{
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+    cursor: pointer;
 }
 
 .dealbtn1 {
-    background: #FC9D9D !important;/* practice purpose only */
+    background: var(--pink) !important;/* practice purpose only */
 }
 
 .dealbox:hover h5{
@@ -244,6 +247,7 @@ ul,ol{
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
+    cursor: pointer;
     position: relative;
 }
 
