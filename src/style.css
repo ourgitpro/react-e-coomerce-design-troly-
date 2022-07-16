@@ -38,7 +38,7 @@ ul,ol{
     font-weight: 700;
     font-family: var(--heading);
     text-transform: uppercase;
-    margin: 0 35px !important;
+    margin: 0 25px !important;
     transition: var(--transition);
     -webkit-transition: var(--transition);
     -moz-transition: var(--transition);
@@ -276,9 +276,118 @@ ul,ol{
     -o-border-radius: 50px;
 }
 
-.topProduct .catogeries li:first-child:hover:after{
+.catogeries li:first-child:hover:after{
     width: 150%;
 }
-.topProduct .catogeries li:hover:after{
+ .catogeries li:hover:after{
     width: 110%;
+}
+
+ .ratingbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.ratingIcon{
+    color: #FFBD69;
+    margin-right: 5px;
+}
+
+.ratingBoxBrand{
+    color: #b1b1b1;
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+}
+
+.rs-panel-body, .rs-panel-header {
+	padding: 0px;
+}
+
+.productColor{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.productSize{
+    color: var(--title-color);
+    margin-left: 10px;
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.productPrice{
+    margin-bottom: 40px;
+}
+
+.productPriceBox{
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background: #FC9D9D;
+    text-align: center;
+    line-height: 45px;
+}
+
+.productPriceIcon{
+    font-size: 20px;
+    color: #fff;
+}
+
+ .productRate{
+    color: var(--hover);
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.activeColor{
+    border: 2px solid #c4c4c4;
+}
+
+.activeSize{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #f1f1f1;
+    border: 1px solid #c4c4c4;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+}
+
+.registration .regbox{
+    width: 340px;
+    margin: 70px auto;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
