@@ -12,7 +12,7 @@ const userInitialState = {
 
 const cartInitialState = {
     cart:{
-        cartItem: []
+        cartItems: localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[]
     }
 }
 
@@ -30,15 +30,26 @@ function userReducer(state,action){
 
 function cartReducer(state,action){
     switch(action.type){
-        case  'CART_ADD_PRODUCT':
+        case 'CART_ADD_PRODUCT':{
             const newItem = action.payload
-            const existingItem = state.cart.cartItem.find((item)=>item._id === newItem._id)
+            const existingItem = state.cart.cartItems.find((item)=> item._id === newItem._id)
             const cartItems = existingItem
                   ?
-                  state.cart.cartItem.map((item)=> item._id === existingItem._id?newItem:item)
+                  state.cart.cartItems.map((item)=> item._id === existingItem._id?newItem:item)
                   :
-                  [...state.cart.cartItem,newItem]
-                  return {...state.cart,cartItems}
+                  [...state.cart.cartItems,newItem]
+                  localStorage.setItem("cartItems",JSON.stringify(cartItems))
+                  return {...state,cart:{...state.cart,cartItems}}
+        }
+        case 'CART_REMOVE_PRODUCT':{
+            const cartItems = state.cart.cartItems.filter((item)=>item._id !== action.payload._id)
+            return {...state,cart:{...state.cart,cartItems}}
+        }
+        case 'CLEAR_CART':{
+            localStorage.removeItem('cartItems')
+            return {...state,cart:{...state.cart,cartItems:[]}}
+        }
+            
         default:
             return state
     }

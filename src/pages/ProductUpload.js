@@ -11,6 +11,7 @@ const ProductUpload = () => {
 	const [content, setContent] = useState('')
 	const [productname, setProductname] = useState('')
 	const [productbrand, setProductbrand] = useState('')
+	const [productimage, setProductimage] = useState('')
 	const [productposition, setProductposition] = useState('')
 	const [productcategory, setProductcategory] = useState('')
 	const [productprice, setProductprice] = useState('')
@@ -20,25 +21,24 @@ const ProductUpload = () => {
 
 
   let handleSubmit =async ()=>{
- console.log(SizeArr)
 
     let {data} = await axios.post('http://localhost:8000/productupload',{
       name: productname,
       brand: productbrand,
+      image: productimage,
       category: productcategory,
       price: productprice,
       color:color,
       size: SizeArr,
       description: content
     })
-    console.log(data)
+    console.log('click')
   }
 
   useEffect(()=>{
     async function fetchData(){
       let {data} = await axios.get('http://localhost:8000/productposition')
-      console.log(data)
-      // setProductposition(data)
+      setProductposition(data)
     }
     fetchData()
   },[])
@@ -100,8 +100,13 @@ const ProductUpload = () => {
         <Form.Control onChange={(e)=>setProductbrand(e)} name="name" type='text' placeholder='Product Brand'/>
         </Form.Group>
         <Form.Group controlId="name-1">
+        <Form.ControlLabel>Product Image</Form.ControlLabel>
+        <Form.Control onChange={(e)=>setProductimage(e)} name="name" type='text' placeholder='Product image'/>
+        </Form.Group>
+        <Form.Group controlId="name-1">
         <Form.ControlLabel>Product Position</Form.ControlLabel>
         <SelectPicker  block /> 
+        {/* data={productposition} */}
         </Form.Group>
         <Form.Group controlId="name-1">
         <Form.ControlLabel>Product Category</Form.ControlLabel>

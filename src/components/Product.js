@@ -12,15 +12,16 @@ const Product = (props) => {
   const [activeSize,setActiveSize] = useState('')
 
   let handleCartProductAdd = (product)=>{
-    const existingItem = cart.cartItem.find((item)=>item._id === product._id)
+    const existingItem = cart.cartItems.find((item)=>item._id === product._id)
     const quantity = existingItem?existingItem.quantity+1:1
-    cartdispatch({type:'CART_ADD_PRODUCT',payload:{...product,quantity}})
+    const color = activeColor
+    cartdispatch({type:'CART_ADD_PRODUCT',payload:{...product,quantity,color}})
   }
 
   return (
   <>
     <Panel  bodyFill style={{ display: 'inline-block', width: "100%" }}>
-      <img src={props.img} style={{ width: "100%" }}/>
+      <img src={props.image} style={{ width: "100%" }}/>
       <div className='ratingbox'>
         <div>
             {props.rating >= 1?<BsStarFill className='ratingIcon'/>:props.rating >= .5? <BsStarHalf className='ratingIcon'/>:<BsStar className='ratingIcon'/>}

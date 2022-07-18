@@ -391,3 +391,54 @@ ul,ol{
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
+.cartpage h1{
+    color: var(--title-color);
+    font-size: 72px;
+    font-weight: 700;
+    font-family: var(--heading);
+    margin-top: 160px;
+    margin-bottom: 100px;
+    text-transform: capitalize;
+}
+
+.cartpage .subheading{
+    color: #666;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: var(--heading);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.cartpage .box{
+    display: flex;
+}
+
+.cartpage .box .details{
+    margin-left: 10px;
+}
+
+.cartpage .box .details .brand{
+    color: #b1b1b1;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: var(--heading);
+    text-transform: uppercase;
+}
+
+.cartpage .box .details .name{
+    color: var(--title-color);
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--heading);
+    margin-bottom: 10px;
+}
+
+.cartpage .box .details .color{
+    color: var(--title-color);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--heading);
+    text-transform: capitalize;
+}
