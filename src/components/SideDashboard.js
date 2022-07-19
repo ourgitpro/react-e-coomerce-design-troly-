@@ -13,7 +13,9 @@ const SideDashboard = () => {
             <Nav.Item>
                 <Link to='/storename'>Create A Store</Link>
             </Nav.Item><br/>
-            <Nav.Item>News</Nav.Item><br/>
+            <Nav.Item>
+              <Link to='/coupon'>Create Coupon</Link>  
+            </Nav.Item><br/>
             <Nav.Item>Solutions</Nav.Item><br/>
             <Nav.Item>Products</Nav.Item><br/>
             <Nav.Item>About</Nav.Item>

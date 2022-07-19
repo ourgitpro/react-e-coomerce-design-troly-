@@ -1,11 +1,39 @@
-import React, { useContext } from 'react'
-import {Grid,Row,Col} from 'rsuite'
+import React, { useContext, useEffect, useState } from 'react'
+import {Grid,Row,Col,Button,Input} from 'rsuite'
 import { Store } from '../Store'
 
 const Cart = () => {
 
     const {cartstate,cartdispatch} = useContext(Store)
     const{ cart } = cartstate
+
+    let [total,setTotal] = useState('')
+    let [shipping,setShipping] = useState(200)
+
+    useEffect(()=>{
+        let price = 0
+        cart.cartItems.map((item)=>{
+            price += item.price * item.quantity 
+            setTotal(price)
+            if(price>=6000){
+                setShipping(100)
+            }else if(price>=2000){
+                setShipping(150)
+            }else{
+                setShipping(200)
+            }
+        })
+    },[cart.cartItems])
+
+    let handleQuantity = (item,quantity)=>{
+        cartdispatch({type:'CART_ADD_PRODUCT',payload:{...item,quantity}})
+    }
+
+    let handleDeleteCart = (item)=>{
+        cartdispatch({type:'CART_REMOVE_PRODUCT',payload:item})
+        localStorage.removeItem('cartItems')
+    }
+    
   return (
     <div className='container'>
         <div className='cartpage'>
@@ -23,10 +51,32 @@ const Cart = () => {
                         </Row>
                     </Grid>
                 </Col>
-                <Col xs={8}>payment</Col>
-            </Row>
-
-            {cart.cartItems.map(item=>(
+                <Col xs={8}>
+                    <div className='payment'>
+                            <h4 className='heading'>shipping</h4>
+                            <Input placeholder="state" />
+                            <Input placeholder="adress" />
+                            <Input placeholder="phone number" />
+                            <div  className='coupon_input'>
+                            <Input placeholder="coupon code" />
+                            <Button className='coupon_btn'>Apply</Button>
+                            </div>
+                            
+                        <div className='subtotal'>
+                                <div className='left'>subtotal</div>
+                                <div className='right'>${total}</div>
+                        </div>
+                        <div className='shipping'>
+                                <div className='left'>shipping</div>
+                                <div className='right'>${shipping}</div>
+                        </div>
+                        <div className='total'>
+                                <div className='left'>order total</div>
+                                <div className='right'>${total+shipping}</div>
+                        </div>
+                    </div>
+                </Col>
+                 {cart.cartItems.map(item=>(
                 <Row className="show-grid" style={{marginTop:'20px'}}>
                     <Col xs={16}>
                         <Grid fluid>
@@ -44,16 +94,31 @@ const Cart = () => {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col className='subheading' xs={3}>price</Col>
-                                <Col className='subheading' xs={5}>quantity</Col>
-                                <Col className='subheading' xs={4}>subtotal</Col>
-                                <Col className='subheading' xs={1}></Col>
+                                <Col className='subheading' xs={3}>
+                                    <h6 className='car_pricing'>${item.price}</h6>
+                                </Col>
+                                <Col className='subheading' xs={5}>
+                                    <div className='quantity'>
+                                    <Button className='button' onClick={()=>handleQuantity(item,item.quantity>1?item.quantity-1:item.quantity)}>-</Button>
+                                    <h6 className='quantity_count'>{item.quantity}</h6>
+                                    <Button className='button'onClick={()=>handleQuantity(item,item.quantity+1)}>+</Button>
+                                    </div>
+                                </Col>
+                                <Col className='subheading' xs={4}>
+                                    <h6 className='subtotal'>${item.price * item.quantity}</h6>
+                                </Col>
+                                <Col className='subheading' xs={1}>
+                                    <Button onClick={()=>handleDeleteCart(item)} className='cross'>x</Button>
+                                </Col>
                             </Row>
                         </Grid>
                     </Col>
                     {/* <Col xs={8}>payment</Col> */}
                 </Row>
             ))}
+            </Row>
+
+           
         </Grid>
         </div>
     </div>

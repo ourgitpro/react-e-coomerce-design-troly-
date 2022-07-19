@@ -397,8 +397,8 @@ ul,ol{
     font-size: 72px;
     font-weight: 700;
     font-family: var(--heading);
-    margin-top: 160px;
-    margin-bottom: 100px;
+    margin-top: 80px;
+    margin-bottom: 50px;
     text-transform: capitalize;
 }
 
@@ -441,4 +441,169 @@ ul,ol{
     font-weight: 500;
     font-family: var(--heading);
     text-transform: capitalize;
+}
+
+.cartpage .car_pricing{
+    color: #303960;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--heading);
+    margin-top: 35px;
+}
+
+.cartpage .quantity{
+    width: 95px;
+    height: 42px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border: 1px solid #b1b1b1;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartpage .button{
+    background: none;
+}
+
+.cartpage .quantity_count{
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--heading);
+}
+
+.cartpage .subtotal{
+    color: #09257f;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: var(--heading);
+    margin-top: 35px;
+}
+
+.cartpage .cross{
+    font-size: 25px;
+    color: #b1b1b1;
+    margin-top: 28px;
+    background: none;
+}
+
+.cartpage .payment{
+    padding: 40px;
+    background: #EEF2F5;
+}
+
+.cartpage .payment .heading{
+    color: var(--title-color);
+    font-size: 24px;
+    font-weight: 500;
+    font-family: var(--heading);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cartpage .payment input{
+    margin-top: 10px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.cartpage .coupon_input{
+    position: relative;
+}
+
+.cartpage .coupon_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    font-family: var(--heading);
+    width: 85px;
+    padding: 8px 0;
+    background: #FC9D9D;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.cartpage .payment .subtotal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartpage .payment .shipping{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartpage .payment .total{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--pink);
+}
+
+.cartpage .payment .subtotal .left,
+.cartpage .payment .subtotal .right{
+    color: var(--title-color);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--heading);
+    text-transform: capitalize;
+}
+
+.cartpage .payment .shipping .left,
+.cartpage .payment .shipping .right{
+    color: var(--title-color);
+    font-size: 18px;
+    font-weight: 400;
+    font-family: var(--heading);
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.cartpage .payment .total .left{
+    color: var(--title-color);
+    font-size: 28px;
+    font-weight: 400;
+    font-family: var(--heading);
+    text-transform: capitalize;
+}
+
+.cartpage .payment .total .right{
+    color: var(--title-color);
+    font-size: 28px;
+    font-weight: 600;
+    font-family: var(--heading);
+    text-transform: capitalize;
+}
+
+.coupon_part .details{
+    text-align: center;
+}
+
+.coupon_part .details input{
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.coupon_part .details Button{
+    color: #fff;
+    background: var(--hover);
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
 }

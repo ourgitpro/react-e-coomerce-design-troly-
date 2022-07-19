@@ -115,8 +115,9 @@ const Menubar = () => {
                       :
                       <Message type="error">Cart Is Empty</Message>
                     }
-                      
+                      <Link to='/cartpage'>
                         <Button  style={{margin:'0 10px'}} color="green" appearance="primary">Cart Page</Button>
+                      </Link>
                         <Button onClick={handleClearCart} style={{margin:'0 10px'}} color="red" appearance="primary">Delete</Button>
                     </Drawer.Body>
                   </Drawer>
