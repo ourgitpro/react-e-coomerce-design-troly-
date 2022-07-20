@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import {Grid,Row,Col,Button,Input} from 'rsuite'
 import { Store } from '../Store'
@@ -8,16 +9,24 @@ const Cart = () => {
     const{ cart } = cartstate
 
     let [total,setTotal] = useState('')
-    let [shipping,setShipping] = useState(200)
+    let [shipping,setShipping] = useState(0)
+    let [intercoupon,setIntercoupon] = useState(0)
+    let [interdiscount,setInterdiscount] = useState(0)
+
+    let handleApply = async()=>{
+        let {data} = await axios.get(`http://localhost:8000/coupon/${intercoupon}`)
+        console.log(data)
+        setInterdiscount(data[0].discount)
+    }
 
     useEffect(()=>{
         let price = 0
         cart.cartItems.map((item)=>{
             price += item.price * item.quantity 
             setTotal(price)
-            if(price>=6000){
+            if(price>=600){
                 setShipping(100)
-            }else if(price>=2000){
+            }else if(price>=200){
                 setShipping(150)
             }else{
                 setShipping(200)
@@ -58,8 +67,8 @@ const Cart = () => {
                             <Input placeholder="adress" />
                             <Input placeholder="phone number" />
                             <div  className='coupon_input'>
-                            <Input placeholder="coupon code" />
-                            <Button className='coupon_btn'>Apply</Button>
+                            <Input onChange={(e)=>setIntercoupon(e)} placeholder="coupon code" />
+                            <Button onClick={handleApply} className='coupon_btn'>Apply</Button>
                             </div>
                             
                         <div className='subtotal'>
@@ -70,9 +79,15 @@ const Cart = () => {
                                 <div className='left'>shipping</div>
                                 <div className='right'>${shipping}</div>
                         </div>
+                        <div className='shipping'>
+                                <div className='left'>Discount -{interdiscount}%</div>
+                                <div className='right'>
+                                    ({interdiscount?((total+shipping)*interdiscount/100):0})
+                                </div>
+                        </div>
                         <div className='total'>
                                 <div className='left'>order total</div>
-                                <div className='right'>${total+shipping}</div>
+                                <div className='right'>${interdiscount?((total+shipping)-(total+shipping)*interdiscount/100):total+shipping}</div>
                         </div>
                     </div>
                 </Col>
