@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
 import {Panel} from 'rsuite'
 import { BsStarFill,BsStarHalf,BsStar,BsHandbag } from 'react-icons/bs';
 import { getSelectedItems } from 'rsuite/esm/CheckTreePicker/utils';
@@ -15,7 +16,8 @@ const Product = (props) => {
     const existingItem = cart.cartItems.find((item)=>item._id === product._id)
     const quantity = existingItem?existingItem.quantity+1:1
     const color = activeColor
-    cartdispatch({type:'CART_ADD_PRODUCT',payload:{...product,quantity,color}})
+    const size = activeSize
+    cartdispatch({type:'CART_ADD_PRODUCT',payload:{...product,quantity,color,size}})
   }
 
   return (
@@ -35,8 +37,12 @@ const Product = (props) => {
         </div>
       </div>
 
-      <Panel className='heading' header={props.heading}>
+      <Panel className='heading'>
+
         <div className='ratingbox'>
+          <Link to={`productdetails/${props.product._id}`}>
+            <h3>{props.heading}</h3>
+          </Link>
           <div>
             {props.color.map(item=>(
               <span className={activeColor == item ? 'productColor activeColor': 'productColor'} onClick={()=>setActivecolor(item)} style={{background: `#${item}`}}></span>

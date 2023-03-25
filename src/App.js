@@ -11,6 +11,9 @@ import AdminDashboard from './pages/AdminDashboard'
 import ProductPosition from "./pages/ProductPosition";
 import Cart from "./pages/Cart";
 import Coupon from "./pages/Coupon";
+import Productdetails from "./pages/Productdetails";
+import Compare from "./pages/Compare";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
             <Route path="/productposition" element={<ProductPosition/>} />   
             <Route path="/cartpage" element={<Cart/>} />   
             <Route path="/coupon" element={<Coupon/>} />   
+            <Route path="/productdetails/:id" element={<Productdetails/>} />   
+            <Route path="/compare" element={<Compare/>} />   
+            <Route path="/shop" element={<Shop/>} />   
           </Routes>
       </BrowserRouter>
     </>

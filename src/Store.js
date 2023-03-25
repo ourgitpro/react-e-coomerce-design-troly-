@@ -16,11 +16,18 @@ const cartInitialState = {
     }
 }
 
+const compareInitialState = {
+    compare:{
+        compareItems: localStorage.getItem('compareItems')?JSON.parse(localStorage.getItem('compareItems')):[]
+    }
+}
+
 function userReducer(state,action){
     switch(action.type){
         case 'USER_LOGIN':
             return({...state,userInfo:action.payload})
         case 'USER_LOGOUT':
+            localStorage.removeItem('userInfo')
             return({...state,userInfo: null
              })
             default:
@@ -55,10 +62,40 @@ function cartReducer(state,action){
     }
 }
 
+function compareReducer(state,action){
+    switch(action.type){
+        case 'COMPARE_ADD_PRODUCT':{
+            const newItem = action.payload
+            const existingItem = state.compare.compareItems.find((item)=> item._id === newItem._id)
+            const compareItems = existingItem
+                  ?
+                  state.compare.compareItems.map((item)=> item._id === existingItem._id?newItem:item)
+                  :
+                  [...state.compare.compareItems,newItem]
+                  localStorage.setItem("compareItems",JSON.stringify(compareItems))
+                  return {...state,compare:{...state.compare,compareItems}}
+        }
+        case 'COMPARE_REMOVE_PRODUCT':{
+            const compareItems = state.compare.compareItems.filter((item)=>item._id !== action.payload._id)
+            return {...state,compare:{...state.compare,compareItems}}
+        }
+        // case 'CLEAR_COMPARE':{
+        //     localStorage.removeItem('compareItems')
+        //     return {...state,compare:{...state.compare,compareItems:[]}}
+        // }
+            
+        default:
+            return state
+    }
+}
+
+
+
 function StoreProvider(props){
     let [state,dispatch] = useReducer(userReducer,userInitialState)
     let [cartstate,cartdispatch] = useReducer(cartReducer,cartInitialState)
-    const value = {state,dispatch,cartstate,cartdispatch}
+    let [comparestate,comparedispatch] = useReducer(compareReducer,compareInitialState)
+    const value = {state,dispatch,cartstate,cartdispatch,comparestate,comparedispatch}
     return <Store.Provider value={value}>{props.children}</Store.Provider>
 }
 export {Store,StoreProvider}

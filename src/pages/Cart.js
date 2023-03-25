@@ -59,6 +59,43 @@ const Cart = () => {
                             <Col className='subheading' xs={1}></Col>
                         </Row>
                     </Grid>
+                    {cart.cartItems.map(item=>(
+                            <Row className="show-grid" style={{marginTop:'20px'}}>
+                                    <Grid fluid>
+                                        <Row className="show-grid">
+                                            <Col xs={11}>
+                                                <div className='box'>
+                                                    <div className='img'>
+                                                        <img src={item.image} width='124px'/>
+                                                    </div>
+                                                    <div className='details'>
+                                                        <h6 className='brand'>{item.brand}</h6>
+                                                        <h6 className='name'>{item.name}</h6>
+                                                        <h6 className='color'>Color<span style={{display:'inline-block',margin:'0 10px',width:'16px',height:'16px',borderRadius:'50%',background:`#${item.color}`}}></span></h6>
+                                                        <h6 className='color'>size</h6>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col className='subheading' xs={3}>
+                                                <h6 className='car_pricing'>${item.price}</h6>
+                                            </Col>
+                                            <Col className='subheading' xs={5}>
+                                                <div className='quantity'>
+                                                <Button className='button' onClick={()=>handleQuantity(item,item.quantity>1?item.quantity-1:item.quantity)}>-</Button>
+                                                <h6 className='quantity_count'>{item.quantity}</h6>
+                                                <Button className='button'onClick={()=>handleQuantity(item,item.quantity+1)}>+</Button>
+                                                </div>
+                                            </Col>
+                                            <Col className='subheading' xs={4}>
+                                                <h6 className='subtotal'>${item.price * item.quantity}</h6>
+                                            </Col>
+                                            <Col className='subheading' xs={1}>
+                                                <Button onClick={()=>handleDeleteCart(item)} className='cross'>x</Button>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
+                            </Row>
+                        ))}
                 </Col>
                 <Col xs={8}>
                     <div className='payment'>
@@ -80,7 +117,7 @@ const Cart = () => {
                                 <div className='right'>${shipping}</div>
                         </div>
                         <div className='shipping'>
-                                <div className='left'>Discount -{interdiscount}%</div>
+                                <div className='left'>Discount: {interdiscount}%</div>
                                 <div className='right'>
                                     ({interdiscount?((total+shipping)*interdiscount/100):0})
                                 </div>
@@ -91,46 +128,7 @@ const Cart = () => {
                         </div>
                     </div>
                 </Col>
-                 {cart.cartItems.map(item=>(
-                <Row className="show-grid" style={{marginTop:'20px'}}>
-                    <Col xs={16}>
-                        <Grid fluid>
-                            <Row className="show-grid">
-                                <Col xs={11}>
-                                    <div className='box'>
-                                        <div className='img'>
-                                            <img src={item.image} width='124px'/>
-                                        </div>
-                                        <div className='details'>
-                                            <h6 className='brand'>{item.brand}</h6>
-                                            <h6 className='name'>{item.name}</h6>
-                                            <h6 className='color'>Color<span style={{display:'inline-block',margin:'0 10px',width:'16px',height:'16px',borderRadius:'50%',background:`#${item.color}`}}></span></h6>
-                                            <h6 className='color'>size</h6>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className='subheading' xs={3}>
-                                    <h6 className='car_pricing'>${item.price}</h6>
-                                </Col>
-                                <Col className='subheading' xs={5}>
-                                    <div className='quantity'>
-                                    <Button className='button' onClick={()=>handleQuantity(item,item.quantity>1?item.quantity-1:item.quantity)}>-</Button>
-                                    <h6 className='quantity_count'>{item.quantity}</h6>
-                                    <Button className='button'onClick={()=>handleQuantity(item,item.quantity+1)}>+</Button>
-                                    </div>
-                                </Col>
-                                <Col className='subheading' xs={4}>
-                                    <h6 className='subtotal'>${item.price * item.quantity}</h6>
-                                </Col>
-                                <Col className='subheading' xs={1}>
-                                    <Button onClick={()=>handleDeleteCart(item)} className='cross'>x</Button>
-                                </Col>
-                            </Row>
-                        </Grid>
-                    </Col>
-                    {/* <Col xs={8}>payment</Col> */}
-                </Row>
-            ))}
+                
             </Row>
 
            

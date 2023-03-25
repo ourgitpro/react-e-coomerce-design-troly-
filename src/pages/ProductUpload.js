@@ -1,5 +1,5 @@
 import React,{useState,useRef, useEffect} from 'react'
-import {Row,Col,Form,ButtonToolbar,Button,Checkbox,SelectPicker} from "rsuite"
+import {Row,Col,Form,ButtonToolbar,Button,Checkbox,SelectPicker,Dropdown} from "rsuite"
 import SideDashboard from '../components/SideDashboard'
 import JoditEditor from "jodit-react";
 import axios from 'axios';
@@ -20,25 +20,12 @@ const ProductUpload = () => {
   const SizeArr = []
 
 
-  let handleSubmit =async ()=>{
-
-    let {data} = await axios.post('http://localhost:8000/productupload',{
-      name: productname,
-      brand: productbrand,
-      image: productimage,
-      category: productcategory,
-      price: productprice,
-      color:color,
-      size: SizeArr,
-      description: content
-    })
-    console.log('click')
-  }
 
   useEffect(()=>{
     async function fetchData(){
       let {data} = await axios.get('http://localhost:8000/productposition')
       setProductposition(data)
+      
     }
     fetchData()
   },[])
@@ -54,33 +41,57 @@ const ProductUpload = () => {
   let handleSM = (e)=>{
     if(SizeArr.indexOf('SM') != -1){
       SizeArr.splice(SizeArr.indexOf('SM'),1)
+      console.log(SizeArr)
     }else{
       SizeArr.push('SM')
+      console.log(SizeArr)
     }
   }
 
   let handleM = (e)=>{
     if(SizeArr.indexOf('M') != -1){
       SizeArr.splice(SizeArr.indexOf('M'),1)
+      console.log(SizeArr)
     }else{
       SizeArr.push('M')
+      console.log(SizeArr)
     }
   }
 
   let handleL = (e)=>{
     if(SizeArr.indexOf('L') != -1){
       SizeArr.splice(SizeArr.indexOf('L'),1)
+      console.log(SizeArr)
     }else{
       SizeArr.push('L')
+      console.log(SizeArr)
     }
   }
 
   let handleXL = (e)=>{
     if(SizeArr.indexOf('XL') != -1){
       SizeArr.splice(SizeArr.indexOf('XL'),1)
+      console.log(SizeArr)
     }else{
       SizeArr.push('XL')
+      console.log(SizeArr)
     }
+  }
+
+  
+  let handleSubmit =async ()=>{
+
+    let {data} = await axios.post('http://localhost:8000/productupload',{
+      name: productname,
+      brand: productbrand,
+      image: productimage,
+      category: productcategory,
+      price: productprice,
+      color:color,
+      size: SizeArr,
+      description: content
+    })
+    console.log(data)
   }
 
   return (
@@ -105,8 +116,7 @@ const ProductUpload = () => {
         </Form.Group>
         <Form.Group controlId="name-1">
         <Form.ControlLabel>Product Position</Form.ControlLabel>
-        <SelectPicker  block /> 
-        {/* data={productposition} */}
+        <SelectPicker data={productposition}  block /> 
         </Form.Group>
         <Form.Group controlId="name-1">
         <Form.ControlLabel>Product Category</Form.ControlLabel>

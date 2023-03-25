@@ -18,7 +18,7 @@ const Login = () => {
               email: email,
               password: password
           })
-          // console.log(data.data)
+          console.log(data)
           dispatch({type:"USER_LOGIN", payload: data.data})
           localStorage.setItem('userInfo',JSON.stringify(data.data))
           navigate("/")

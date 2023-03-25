@@ -22,7 +22,7 @@ const Menubar = () => {
 
   let handleLogout =()=>{
     dispatch({type: "USER_LOGOUT",})
-    localStorage.removeItem('userInfo')
+    
   }
 
   let handleQuantity = (item,quantity)=>{
@@ -40,19 +40,19 @@ const Menubar = () => {
 
   return (
     <>
-    <div className='container'>
+    <div className='container menubar'>
         <Navbar className='main_menu'>
             <Navbar.Brand href="#">
             <img src={logo}/>
             </Navbar.Brand>
             <Nav className='menu_item'>
-            <Nav.Item>Home</Nav.Item>
-            <Nav.Item>pages</Nav.Item>
-            <Nav.Item>blog</Nav.Item>
-            <Nav.Item>contacts</Nav.Item>
+            <Nav.Item className='menu_items'>Home</Nav.Item>
+            <Nav.Item className='menu_items'>pages</Nav.Item>
+            <Nav.Item className='menu_items'>blog</Nav.Item>
+            <Nav.Item className='menu_items'>contacts</Nav.Item>
             {state.userInfo
             ?
-            <Dropdown title={state.userInfo.Name}>
+            <Dropdown className='menu_items' title={state.userInfo.Name}>
               {state.userInfo.isAdmin&&
                 <Dropdown.Item><Link to='/admin'>Admin Dashboard</Link></Dropdown.Item>
               }
@@ -117,6 +117,9 @@ const Menubar = () => {
                     }
                       <Link to='/cartpage'>
                         <Button  style={{margin:'0 10px'}} color="green" appearance="primary">Cart Page</Button>
+                      </Link>
+                      <Link to='/compare'>
+                        <Button  style={{margin:'0 10px'}} color="green" appearance="primary">compare</Button>
                       </Link>
                         <Button onClick={handleClearCart} style={{margin:'0 10px'}} color="red" appearance="primary">Delete</Button>
                     </Drawer.Body>
